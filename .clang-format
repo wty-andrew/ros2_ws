@@ -1,0 +1,14 @@
+Language: Cpp
+BasedOnStyle: Google
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+AlignConsecutiveMacros: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: WithoutElse
+BinPackArguments: false
+BinPackParameters: false
+ColumnLimit: 100
+Cpp11BracedListStyle: false
+DerivePointerAlignment: false
+IndentWidth: 4

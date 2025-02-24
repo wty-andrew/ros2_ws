@@ -1,0 +1,33 @@
+services:
+  ros2:
+    build:
+      context: .
+      target: dev
+      args:
+        - USERNAME=${USERNAME}
+    command: sleep infinity
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: cdi
+              device_ids:
+                - nvidia.com/gpu=all
+              capabilities:
+                - gpu
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - __NV_PRIME_RENDER_OFFLOAD
+      - __GLX_VENDOR_LIBRARY_NAME
+      - XCURSOR_SIZE
+    network_mode: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+      - .:/ros2_ws
+    device_cgroup_rules:
+      - 'c 13:* rmw' # joystick
+      - 'c 81:* rmw' # webcam

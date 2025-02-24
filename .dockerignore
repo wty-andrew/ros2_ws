@@ -1,0 +1,12 @@
+.git
+.gitignore
+compose*
+Dockerfile*
+
+.github
+.vscode
+*.md
+
+build
+install
+log

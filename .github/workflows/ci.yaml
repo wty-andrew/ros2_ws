@@ -1,0 +1,14 @@
+name: ci
+
+on: [push]
+
+env:
+  IMAGE_NAME: ros2-template
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build --target ci -t $IMAGE_NAME .
+    - run: docker run --rm $IMAGE_NAME /bin/bash -c "source /opt/ros/jazzy/setup.bash && source /ros2_ws/install/setup.bash && colcon test"
